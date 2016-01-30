@@ -224,6 +224,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7da27017e4775af41a2404f663c3e71a, type: 2}
+    - target: {fileID: 138542, guid: c3c48f8a8a9ddf04da74466e03edbd65, type: 2}
+      propertyPath: m_Name
+      value: PlayerDogPlaceHolder
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3c48f8a8a9ddf04da74466e03edbd65, type: 2}
   m_IsPrefabParent: 0
@@ -341,7 +345,7 @@ Prefab:
     - target: {fileID: 11427472, guid: dfd59243d283343aa9b325435c67f881, type: 2}
       propertyPath: dogPrefab
       value: 
-      objectReference: {fileID: 138542, guid: c3c48f8a8a9ddf04da74466e03edbd65, type: 2}
+      objectReference: {fileID: 188062, guid: d88e9470474c1491986f43bd62a5a0e7, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfd59243d283343aa9b325435c67f881, type: 2}
   m_IsPrefabParent: 0
@@ -382,7 +386,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 407336, guid: f823b6ae63d20425b866b678dca94fe3, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f823b6ae63d20425b866b678dca94fe3, type: 2}
@@ -569,7 +573,7 @@ MonoBehaviour:
   - {fileID: 1548925550}
   - {fileID: 1322112130}
   - {fileID: 462535054}
-  dogPrefab: {fileID: 138542, guid: c3c48f8a8a9ddf04da74466e03edbd65, type: 2}
+  dogPrefab: {fileID: 188062, guid: d88e9470474c1491986f43bd62a5a0e7, type: 2}
 --- !u!4 &1864309055
 Transform:
   m_ObjectHideFlags: 0
@@ -619,7 +623,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 472088, guid: 96565722ae74d4db3a9b3bfce3a03b24, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96565722ae74d4db3a9b3bfce3a03b24, type: 2}
@@ -649,7 +653,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1933624473}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 347b0f656a990e842bc5db6ffbdd3b7f, type: 3}
+  m_Script: {fileID: 11500000, guid: bc3b68508d2db461491391a39537b2dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5

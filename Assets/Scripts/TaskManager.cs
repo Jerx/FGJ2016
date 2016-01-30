@@ -18,15 +18,15 @@ public class TaskManager : MonoBehaviour {
     //===================================================================
 
     void OnEnable() {
-        Movement.OnBow += CheckBowTask;
-        Movement.OnJumpOnSpot += CheckJumpOnSpotTask;
-        Movement.OnRunningJump += CheckRunningJump;
+		UserDogMovement.OnBow += CheckBowTask;
+		UserDogMovement.OnJumpOnSpot += CheckJumpOnSpotTask;
+		UserDogMovement.OnRunningJump += CheckRunningJump;
     }
 
     void OnDisable() {
-        Movement.OnBow -= CheckBowTask;
-        Movement.OnJumpOnSpot -= CheckJumpOnSpotTask;
-        Movement.OnRunningJump -= CheckRunningJump;
+		UserDogMovement.OnBow -= CheckBowTask;
+		UserDogMovement.OnJumpOnSpot -= CheckJumpOnSpotTask;
+		UserDogMovement.OnRunningJump -= CheckRunningJump;
     }
 
 
