@@ -18,7 +18,6 @@ public class TerrainManager : MonoBehaviour {
 		terrain.transform.parent = this.transform;
 		Vector3 terrainSize = terrain.terrainData.size;
 		float width = terrainSize.x;
-		float length = terrainSize.z;
 
 		Vector3 pos = new Vector3();
 		pos.x = offset;
