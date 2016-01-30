@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 467412}
   - 143: {fileID: 14314134}
-  - 114: {fileID: 11402382}
   m_Layer: 0
   m_Name: DogPlaceHolder
   m_TagString: Untagged
@@ -549,21 +548,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11402382
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 347b0f656a990e842bc5db6ffbdd3b7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpSpeed: 4
-  maxBowTimer: 1
-  respawnTimerMax: 0.5
 --- !u!136 &13639000
 CapsuleCollider:
   m_ObjectHideFlags: 1

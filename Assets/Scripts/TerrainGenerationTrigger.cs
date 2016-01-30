@@ -11,7 +11,8 @@ public class TerrainGenerationTrigger : MonoBehaviour {
 
 	void OnTriggerExit(Collider collider) {
 		Debug.Log("Name: " + collider.gameObject.name);
-		terrainManager.nextTerrain();
+        GameObject.Destroy(GameObject.Find("GuideDog"));
+        terrainManager.nextTerrain();
 		GetComponent<BoxCollider>().enabled = false;
 	}
 }

@@ -17,7 +17,7 @@ public class Movement : MonoBehaviour {
 
 
     public float moveSpeed = 5.0f;
-    public float jumpSpeed = 20f;
+    public float jumpSpeed = 4.0f;
 
     private Vector3 movementSpeed = new Vector3();
 
