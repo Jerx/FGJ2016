@@ -526,6 +526,10 @@ Prefab:
       propertyPath: m_Name
       value: TerrainMedGap (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 438954, guid: dbf77410bf4844e9b9a67eea6b58b334, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dbf77410bf4844e9b9a67eea6b58b334, type: 2}
   m_IsPrefabParent: 0
