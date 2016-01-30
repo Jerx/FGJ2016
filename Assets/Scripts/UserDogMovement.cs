@@ -11,9 +11,7 @@ public class UserDogMovement : Movement {
 
     public delegate void RunningJumpEvent();
     public static event RunningJumpEvent OnRunningJump;
-
-    public Animator animator;
-	
+    	
 	protected override void UpdateInputMovement() {
 
 		float dx = Input.GetAxis("Horizontal");

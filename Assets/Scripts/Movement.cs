@@ -19,7 +19,7 @@ public abstract class Movement : MonoBehaviour {
         set;
     }
 
-    public float maxBowTimer = 1.0f;
+    public float maxBowTimer = 0.375f;
     private float bowTimer;
 
     private CharacterController characterController;

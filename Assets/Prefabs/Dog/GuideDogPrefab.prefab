@@ -1066,10 +1066,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1754bda8382414011bc9ed1947e75de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 9599104}
   moveSpeed: 3.5
   jumpSpeed: 4
   jumpBoost: 1.7
-  maxBowTimer: 1
+  maxBowTimer: 0.375
   respawnTimerMax: 1
 --- !u!137 &13737636
 SkinnedMeshRenderer:

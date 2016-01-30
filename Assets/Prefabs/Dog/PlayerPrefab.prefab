@@ -1040,12 +1040,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3b68508d2db461491391a39537b2dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 9517336}
   moveSpeed: 3.5
   jumpSpeed: 4
   jumpBoost: 1.7
-  maxBowTimer: 1
+  maxBowTimer: 0.375
   respawnTimerMax: 1
-  animator: {fileID: 9517336}
 --- !u!114 &11499756
 MonoBehaviour:
   m_ObjectHideFlags: 1

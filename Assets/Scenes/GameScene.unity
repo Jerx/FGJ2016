@@ -737,10 +737,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 11493318, guid: 15677946ec94eb24990d83a96530b05d, type: 2}
-      propertyPath: maxBowTimer
-      value: 0.375
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15677946ec94eb24990d83a96530b05d, type: 2}
   m_IsPrefabParent: 0
