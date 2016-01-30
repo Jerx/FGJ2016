@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameStateTracker {
+public class GameStateTracker : MonoBehaviour {
 
     public enum GameState {
         TUTORIAL,
@@ -11,16 +11,34 @@ public class GameStateTracker {
     private static GameState currentState = GameState.TUTORIAL;
     private static int successfulJumpCounter = 0;
 
+    private static InterfaceGameStateChangeRule currentRule;
+
+    //=================================================
+    // GameState Rule
+    //=================================================
+
+    public static void SetGameState(GameState newState) {
+        currentState = newState;
+    }
+
+    public static void SetGameStateChangeRule(InterfaceGameStateChangeRule rule) {
+        currentRule = rule;
+    }
+
+    void Update() {
+        currentRule.UpdateGameState();
+    }
+
+    //=================================================
+    // Counter, not sure if it is needed anymore...
+    //=================================================
+
     public static void IncrementSuccessfulJumpCounter() {
         successfulJumpCounter++;
     }
 
     public static int GetSuccessfulJumpCounter() {
         return successfulJumpCounter;
-    }
-
-    public static void SetGameState(GameState newState) {
-        currentState = newState;
     }
 
     //=================================================

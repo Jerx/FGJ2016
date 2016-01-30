@@ -28,6 +28,14 @@ public class TerrainManager : MonoBehaviour {
         BoxCollider[] arr = terrain.GetComponentsInChildren<BoxCollider>();
         foreach (BoxCollider bc in arr) {
             bc.enabled = true;
+
+            if (GameStateTracker.InNormalMode()) {
+                foreach (Transform child in bc.transform.parent) {
+                    if (child.name == "TutorialTrigger") {
+                        child.GetComponent<BoxCollider>().enabled = false;
+                    }
+                }
+            }
         }
 
         offset += width;

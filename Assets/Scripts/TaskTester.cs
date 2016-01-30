@@ -4,6 +4,10 @@ using System.Collections;
 public class TaskTester : MonoBehaviour {
 
     public TaskManager taskManager;
+
+    void Awake() {
+        GameStateTracker.SetGameStateChangeRule(new TutorialGameStateRule());
+    }
     
 	// Use this for initialization
 	void Start () {

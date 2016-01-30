@@ -11,8 +11,7 @@ public class TaskManager : MonoBehaviour {
 
     private bool taskFailed = false;
     private LinkedList<Task> tasks = new LinkedList<Task>();
-
-
+    
     //===================================================================
     // Set the event listener for the TaskManager to the correct methods
     //===================================================================
@@ -75,5 +74,6 @@ public class TaskManager : MonoBehaviour {
     public bool IsTaskFailed() {
         return taskFailed;
     }
+
 
 }
