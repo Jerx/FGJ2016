@@ -6,8 +6,17 @@ public class Movement : MonoBehaviour {
     public float moveSpeed = 5.0f;
     public float jumpSpeed = 20f;
 
-    private Vector3 movement = new Vector3();
+    private Vector3 movementSpeed = new Vector3();
+    public Vector3 MovementSpeed {
+        set { movementSpeed = value; }
+        get { return movementSpeed; }
+    }
+
     private bool bowing = false;
+    public bool Bowing {
+        get;
+        set;
+    }
 
     public float maxBowTimer = 1.0f;
     private float bowTimer;
@@ -28,20 +37,20 @@ public class Movement : MonoBehaviour {
             } else {
                 float dx = Input.GetAxis("Horizontal");
 
-                movement.x = dx * moveSpeed;
+                movementSpeed.x = dx * moveSpeed;
 
                 if (Input.GetButton("Jump")) {
-                    movement.y = jumpSpeed;
+                    movementSpeed.y = jumpSpeed;
                 } else if (Input.GetButton("Bow")) {
                     bowing = true;
                 }
             }
         }
 
-        movement += Physics.gravity * Time.deltaTime;
-        cc.Move(movement * Time.deltaTime);
+        movementSpeed += Physics.gravity * Time.deltaTime;
+        cc.Move(movementSpeed * Time.deltaTime);
     }
-    
+
     private void UpdateBowing() {
         bowTimer += Time.deltaTime;
         if (cc.height > 0.25) {
