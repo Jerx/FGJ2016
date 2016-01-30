@@ -20,9 +20,6 @@ public class TerrainManager : MonoBehaviour {
 		float width = terrainSize.x;
 		float length = terrainSize.z;
 
-		Debug.Log("    Width = " + width);
-		Debug.Log("    Length = " + length);
-
 		Vector3 pos = new Vector3();
 		pos.x = offset;
 		pos.y = verticalOffset;
@@ -34,8 +31,13 @@ public class TerrainManager : MonoBehaviour {
 
 		offset += width;
 
-		// TODO: vertical offset
-		// verticalOffset += 
+		// vertical offset
+		int playerZ = 5;
+		int hwidth = terrain.terrainData.heightmapWidth;
+		float heightDiff = terrain.terrainData.GetHeight(hwidth, playerZ) - terrain.terrainData.GetHeight(0, playerZ);
+		Debug.Log("    Height diff: " + heightDiff);
+		verticalOffset += heightDiff;
+
 	}
 
 	int nextIndex() {
