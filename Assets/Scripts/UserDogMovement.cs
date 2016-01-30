@@ -13,9 +13,10 @@ public class UserDogMovement : Movement {
     public static event RunningJumpEvent OnRunningJump;
 	
 	protected override void UpdateInputMovement() {
+
 		float dx = Input.GetAxis("Horizontal");
 		
-		movementSpeed.x = dx * moveSpeed;
+		doMove(dx);
 		
 		if (Input.GetButton("Jump")) {
 			doJump();
