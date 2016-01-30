@@ -9,6 +9,8 @@ public class TerrainManager : MonoBehaviour {
 
     public GameObject dogPrefab;
 
+    private Terrain currentTerrain;
+
     public void nextTerrain() {
 
         int index = nextIndex();
@@ -47,6 +49,8 @@ public class TerrainManager : MonoBehaviour {
         Debug.Log("    Height diff: " + heightDiff);
         verticalOffset += heightDiff;
 
+        currentTerrain = terrain;
+
         if (GameStateTracker.InTutorialMode()) {
             SpawnGuideDog(terrain);
         }
@@ -69,5 +73,17 @@ public class TerrainManager : MonoBehaviour {
                 guideDog.name = "GuideDog";
             }
         }
+    }
+
+    public void RespawnGuideDog() {
+        Debug.Log("Respawning Guide Dog");
+        DespawnGuideDog();
+        if (GameStateTracker.InTutorialMode()) {
+            SpawnGuideDog(currentTerrain);
+        }
+    }
+    
+    public void DespawnGuideDog() {
+        GameObject.Destroy(GameObject.Find("GuideDog"));
     }
 }

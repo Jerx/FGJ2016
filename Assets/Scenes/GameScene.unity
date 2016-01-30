@@ -538,6 +538,10 @@ Prefab:
       propertyPath: m_Name
       value: TerrainMedGap (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 425416, guid: dbf77410bf4844e9b9a67eea6b58b334, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dbf77410bf4844e9b9a67eea6b58b334, type: 2}
   m_IsPrefabParent: 0
@@ -643,8 +647,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c22f8dde88d20e14ca7646e418b0a56d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 1.25, y: 1.5, z: -2.5}
-  eulerAngles: {x: 25, y: 0, z: 0}
+  offset: {x: 0, y: 0.1, z: -1.2}
+  eulerAngles: {x: 10, y: 30, z: 0}
 --- !u!114 &1933624475
 MonoBehaviour:
   m_ObjectHideFlags: 0
