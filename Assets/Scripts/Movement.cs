@@ -3,23 +3,12 @@ using System.Collections;
 
 
 
-public class Movement : MonoBehaviour {
-
-    public delegate void BowEvent();
-    public static event BowEvent OnBow;
-
-    public delegate void JumpOnSpotEvent();
-    public static event JumpOnSpotEvent OnJumpOnSpot;
-
-    public delegate void RunningJumpEvent();
-    public static event RunningJumpEvent OnRunningJump;
-
-
+public abstract class Movement : MonoBehaviour {
 
     public float moveSpeed = 5.0f;
     public float jumpSpeed = 4.0f;
 
-    private Vector3 movementSpeed = new Vector3();
+    protected Vector3 movementSpeed = new Vector3();
 
     private bool bowing = false;
     public bool Bowing {
@@ -30,16 +19,14 @@ public class Movement : MonoBehaviour {
     public float maxBowTimer = 1.0f;
     private float bowTimer;
 
-    private CharacterController cc;
-    private float ccDefaultHeight;
+    private CharacterController characterController;
 
     private bool respawning = false;
     private float respawnTimer = 0f;
     public float respawnTimerMax = 1f;
 
     void Start() {
-        cc = GetComponent<CharacterController>();
-        ccDefaultHeight = cc.height;
+        characterController = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -47,17 +34,17 @@ public class Movement : MonoBehaviour {
         if (respawning) {
             UpdateRespawning();
             ApplyGravity();
-        } else if (cc.isGrounded) {
+        } else if (characterController.isGrounded) {
             if (bowing) {
                 UpdateBowing();
             } else {
-                UpdateUserControls();
+                UpdateInputMovement();
             }
         } else {
             ApplyGravity();
         }
 
-        cc.Move(movementSpeed * Time.deltaTime);
+        characterController.Move(movementSpeed * Time.deltaTime);
     }
 
     /// <summary>
@@ -76,42 +63,21 @@ public class Movement : MonoBehaviour {
     /// </summary>
     private void UpdateBowing() {
         bowTimer += Time.deltaTime;
-        if (cc.height > 0.25) {
-            cc.height -= 10 * Time.deltaTime;
-        }
         if (bowTimer >= maxBowTimer) {
             bowTimer = 0.0f;
             bowing = false;
-            cc.height = ccDefaultHeight;
-        }
-    }
-
-    private void UpdateUserControls() {
-        float dx = Input.GetAxis("Horizontal");
-
-        movementSpeed.x = dx * moveSpeed;
-
-        if (Input.GetButton("Jump")) {
-            movementSpeed.y = jumpSpeed;
-            if (Mathf.Abs(movementSpeed.x) < 0.01f) {
-                if (OnJumpOnSpot != null) {
-                    OnJumpOnSpot();
-                }
-            } else {
-                if (OnRunningJump != null) {
-                    OnRunningJump();
-                }
-            }
-        } else if (Input.GetButton("Bow")) {
-            bowing = true;
-            if (OnBow != null) {
-                OnBow();
-            }
-        }
+			transform.eulerAngles = Vector3.zero;
+        } else {
+			Vector3 bowingRotationVector = new Vector3();
+			bowingRotationVector.z = -30;
+			transform.eulerAngles = bowingRotationVector;
+		}
     }
 
     private void ApplyGravity() {
-        movementSpeed += Physics.gravity * Time.deltaTime;
+		if (!characterController.isGrounded) {
+        	movementSpeed += Physics.gravity * Time.deltaTime;
+		}
     }
 
     /// <summary>
@@ -123,4 +89,20 @@ public class Movement : MonoBehaviour {
         transform.position = position;
         movementSpeed = Vector3.zero;
     }
+
+	protected abstract void UpdateInputMovement();
+
+	protected void doJump() {
+		if (characterController.isGrounded) {
+			movementSpeed.y = jumpSpeed;
+		}
+	}
+
+	protected void doBow() {
+		bowing = true;
+	}
+
+	protected void doMove(float dx) {
+		movementSpeed.x = dx * moveSpeed;
+	}
 }
