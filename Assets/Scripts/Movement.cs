@@ -22,7 +22,7 @@ public class Movement : MonoBehaviour {
 
     private bool respawning = false;
     private float respawnTimer = 0f;
-    public float respawnTimerMax = 0.5f;
+    public float respawnTimerMax = 1f;
 
     void Start() {
         cc = GetComponent<CharacterController>();
@@ -33,25 +33,15 @@ public class Movement : MonoBehaviour {
     void Update() {
         if (respawning) {
             UpdateRespawning();
-            return; // Don't do anything else before spawning complete
-        }
-
-        if (cc.isGrounded) {
+            ApplyGravity();
+        } else if (cc.isGrounded) {
             if (bowing) {
                 UpdateBowing();
             } else {
-                float dx = Input.GetAxis("Horizontal");
-
-                movementSpeed.x = dx * moveSpeed;
-
-                if (Input.GetButton("Jump")) {
-                    movementSpeed.y = jumpSpeed;
-                } else if (Input.GetButton("Bow")) {
-                    bowing = true;
-                }
+                UpdateUserControls();
             }
         } else {
-            movementSpeed += Physics.gravity * Time.deltaTime;
+            ApplyGravity();
         }
 
         cc.Move(movementSpeed * Time.deltaTime);
@@ -81,6 +71,22 @@ public class Movement : MonoBehaviour {
             bowing = false;
             cc.height = ccDefaultHeight;
         }
+    }
+
+    private void UpdateUserControls() {
+        float dx = Input.GetAxis("Horizontal");
+
+        movementSpeed.x = dx * moveSpeed;
+
+        if (Input.GetButton("Jump")) {
+            movementSpeed.y = jumpSpeed;
+        } else if (Input.GetButton("Bow")) {
+            bowing = true;
+        }
+    }
+
+    private void ApplyGravity() {
+        movementSpeed += Physics.gravity * Time.deltaTime;
     }
 
     /// <summary>
