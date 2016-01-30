@@ -3,44 +3,52 @@ using System.Collections;
 
 public class TerrainManager : MonoBehaviour {
 
-	private float offset = 60f;
-	private float verticalOffset = -100f;
-	public Terrain[] terrainPrefabs;
+    private float offset = 60f;
+    private float verticalOffset = -100f;
+    public Terrain[] terrainPrefabs;
 
-	public void nextTerrain() {
+    public void nextTerrain() {
 
-		int index = nextIndex();
+        int index = nextIndex();
 
-		Debug.Log ("Creating new terrain!");
-		Debug.Log ("  Index: " + index);
+        Debug.Log("Creating new terrain!");
+        Debug.Log("  Index: " + index);
 
-		Terrain terrain = GameObject.Instantiate<Terrain>(terrainPrefabs[index]);
-		terrain.transform.parent = this.transform;
-		Vector3 terrainSize = terrain.terrainData.size;
-		float width = terrainSize.x;
+        Terrain terrain = GameObject.Instantiate<Terrain>(terrainPrefabs[index]);
+        terrain.transform.parent = this.transform;
+        Vector3 terrainSize = terrain.terrainData.size;
+        float width = terrainSize.x;
 
-		Vector3 pos = new Vector3();
-		pos.x = offset;
-		pos.y = verticalOffset;
-		terrain.transform.localPosition = pos;
-		BoxCollider[] arr = terrain.GetComponentsInChildren<BoxCollider>();
-		foreach (BoxCollider bc in arr) {
-			bc.enabled = true;
-		}
+        Vector3 pos = new Vector3();
+        pos.x = offset;
+        pos.y = verticalOffset;
+        terrain.transform.localPosition = pos;
+        BoxCollider[] arr = terrain.GetComponentsInChildren<BoxCollider>();
+        foreach (BoxCollider bc in arr) {
+            bc.enabled = true;
+        }
 
-		offset += width;
+        offset += width;
 
-		// vertical offset
-		int playerZ = 5;
-		int hwidth = terrain.terrainData.heightmapWidth;
-		float heightDiff = terrain.terrainData.GetHeight(hwidth, playerZ) - terrain.terrainData.GetHeight(0, playerZ);
-		Debug.Log("    Height diff: " + heightDiff);
-		verticalOffset += heightDiff;
+        // vertical offset
+        int playerZ = 5;
+        int hwidth = terrain.terrainData.heightmapWidth;
+        float heightDiff = terrain.terrainData.GetHeight(hwidth, playerZ) - terrain.terrainData.GetHeight(0, playerZ);
+        Debug.Log("    Height diff: " + heightDiff);
+        verticalOffset += heightDiff;
 
-	}
+    }
 
-	int nextIndex() {
-		// TODO: Implement this properly.
-		return 2;
-	}
+    int nextIndex() {
+        // TODO: Implement this properly.
+        return 2;
+    }
+
+    /// <summary>
+    /// Spawn in the Tutorial Dog at the Spawn Point defined in the Given Terrain
+    /// </summary>
+    /// <param name="terrain"></param>
+    void SpawnGuideDog(Terrain terrain) {
+        //terrain.gameObject.
+    }
 }

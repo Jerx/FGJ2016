@@ -11,6 +11,7 @@ public class TaskTester : MonoBehaviour {
         taskManager.AddTask(TaskManager.Task.BOW);
         taskManager.AddTask(TaskManager.Task.BOW);
         taskManager.AddTask(TaskManager.Task.BOW);
+        taskManager.AddTask(TaskManager.Task.JUMP_ON_SPOT);
     }
 	
 }

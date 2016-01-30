@@ -11,6 +11,10 @@ public class Movement : MonoBehaviour {
     public delegate void JumpOnSpotEvent();
     public static event JumpOnSpotEvent OnJumpOnSpot;
 
+    public delegate void RunningJumpEvent();
+    public static event RunningJumpEvent OnRunningJump;
+
+
 
     public float moveSpeed = 5.0f;
     public float jumpSpeed = 20f;
@@ -92,6 +96,10 @@ public class Movement : MonoBehaviour {
             if (Mathf.Abs(movementSpeed.x) < 0.01f) {
                 if (OnJumpOnSpot != null) {
                     OnJumpOnSpot();
+                }
+            } else {
+                if (OnRunningJump != null) {
+                    OnRunningJump();
                 }
             }
         } else if (Input.GetButton("Bow")) {

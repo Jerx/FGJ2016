@@ -20,11 +20,13 @@ public class TaskManager : MonoBehaviour {
     void OnEnable() {
         Movement.OnBow += CheckBowTask;
         Movement.OnJumpOnSpot += CheckJumpOnSpotTask;
+        Movement.OnRunningJump += CheckRunningJump;
     }
 
     void OnDisable() {
         Movement.OnBow -= CheckBowTask;
         Movement.OnJumpOnSpot -= CheckJumpOnSpotTask;
+        Movement.OnRunningJump -= CheckRunningJump;
     }
 
 
@@ -59,6 +61,11 @@ public class TaskManager : MonoBehaviour {
             taskFailed = true;
         }
         Debug.Log("Mission Progress: Failed = " + IsTaskFailed());
+    }
+
+    private void CheckRunningJump() {
+        taskFailed = true;
+        Debug.Log("Mission Failed due to Premature Jumping");
     }
 
     /// <summary>
