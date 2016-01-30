@@ -43,6 +43,14 @@ public class TaskManager : MonoBehaviour {
 		tasks.AddLast(task);
 		tasksLeft.AddLast(task);
 	}
+
+	public void RestartTasks() {
+		taskFailed = false;
+		tasksLeft.Clear ();
+		foreach (Task t in tasks) {
+			tasksLeft.AddLast(t);
+		}
+	}
 	
 	public void ResetTasks() {
 		tasks.Clear();
