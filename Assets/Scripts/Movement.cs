@@ -96,7 +96,8 @@ public abstract class Movement : MonoBehaviour {
 
 	protected void doJump() {
 		if (characterController.isGrounded) {
-			movementSpeed.y = jumpSpeed * getBoostForJump();
+			movementSpeed.x *= getBoostForJump();
+			movementSpeed.y = jumpSpeed;
 		}
 	}
 
