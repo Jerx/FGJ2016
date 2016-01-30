@@ -13,6 +13,9 @@ public class TaskManager : MonoBehaviour {
 	private LinkedList<Task> tasks = new LinkedList<Task>();
 	private LinkedList<Task> tasksLeft = new LinkedList<Task>();
 
+	private int fails = 0;
+	private bool completedMission = false;
+
 	public LinkedList<Task> getCurrentTasks() {
 		LinkedList<Task> list = new LinkedList<Task>();
 		foreach (Task t in tasks) {
@@ -50,11 +53,27 @@ public class TaskManager : MonoBehaviour {
 		foreach (Task t in tasks) {
 			tasksLeft.AddLast(t);
 		}
+		doMissionCheck();
 	}
 	
 	public void ResetTasks() {
 		tasks.Clear();
 		tasksLeft.Clear();
+		doMissionCheck();
+	}
+
+	private void doMissionCheck() {
+		if (GameStateTracker.InTutorialMode() || completedMission) {
+			fails = 0;
+			completedMission = false;
+		} else {
+			++fails;
+		}
+		Debug.Log("Mission check. Fails so far: " + fails);
+	}
+
+	private void checkIfCompleted() {
+		completedMission = IsMissionComplete();
 	}
 	
 	/// <summary>
@@ -63,6 +82,7 @@ public class TaskManager : MonoBehaviour {
     private void CheckBowTask() {
         if (tasksLeft.First != null && tasksLeft.First.Value == Task.BOW) {
             tasksLeft.RemoveFirst();
+			checkIfCompleted();
         } else {
             taskFailed = true;
         }
@@ -75,6 +95,7 @@ public class TaskManager : MonoBehaviour {
     private void CheckJumpOnSpotTask() {
         if(tasksLeft.First != null && tasksLeft.First.Value == Task.JUMP_ON_SPOT) {
             tasksLeft.RemoveFirst();
+			checkIfCompleted();
         } else {
             taskFailed = true;
         }
@@ -95,8 +116,11 @@ public class TaskManager : MonoBehaviour {
     }
 
 	public bool IsMissionComplete() {
-		Debug.Log("Mission complete: " + (!taskFailed && tasksLeft.Count == 0));
 		return !taskFailed && tasksLeft.Count == 0;
 	}
 
+	public int MissionFailsInARow() {
+		Debug.Log("Fails: " + fails);
+		return fails;
+	}
 }
