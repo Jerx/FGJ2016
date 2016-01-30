@@ -35,6 +35,7 @@ public abstract class Movement : MonoBehaviour {
             UpdateRespawning();
             ApplyGravity();
         } else if (characterController.isGrounded) {
+			movementSpeed.y = 0f;
             if (bowing) {
                 UpdateBowing();
             } else {
@@ -104,5 +105,13 @@ public abstract class Movement : MonoBehaviour {
 
 	protected void doMove(float dx) {
 		movementSpeed.x = dx * moveSpeed;
+	}
+
+	protected bool IsIdle() {
+		return characterController.isGrounded && !bowing && isZeroMovement();
+	}
+
+	private bool isZeroMovement() {
+		return Vector3.Magnitude(movementSpeed) < 1e-3f;
 	}
 }

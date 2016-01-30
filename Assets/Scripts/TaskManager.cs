@@ -5,13 +5,21 @@ using System.Collections.Generic;
 
 public class TaskManager : MonoBehaviour {
 
-    public enum Task {
-        BOW, JUMP_ON_SPOT, NONE
-    }
+	public enum Task {
+		BOW, JUMP_ON_SPOT
+	}
 
-    private bool taskFailed = false;
-    private LinkedList<Task> tasks = new LinkedList<Task>();
+	private bool taskFailed = false;
+	private LinkedList<Task> tasks = new LinkedList<Task>();
+	private LinkedList<Task> tasksLeft = new LinkedList<Task>();
 
+	public LinkedList<Task> getCurrentTasks() {
+		LinkedList<Task> list = new LinkedList<Task>();
+		foreach (Task t in tasks) {
+			list.AddLast(t);
+		}
+		return list;
+	}
 
     //===================================================================
     // Set the event listener for the TaskManager to the correct methods
@@ -29,22 +37,23 @@ public class TaskManager : MonoBehaviour {
 		UserDogMovement.OnRunningJump -= CheckRunningJump;
     }
 
-
     public void AddTask(Task task) {
-        Debug.Log("Added Task " + task.ToString());
-        tasks.AddLast(task);
-    }
-
-    public void ResetTasks() {
-        tasks.Clear();
-    }
-
-    /// <summary>
+		Debug.Log("Added Task " + task.ToString());
+		tasks.AddLast(task);
+		tasksLeft.AddLast(task);
+	}
+	
+	public void ResetTasks() {
+		tasks.Clear();
+		tasksLeft.Clear();
+	}
+	
+	/// <summary>
     /// Check if the current task is to BOW, otherwise fail the current mission.
     /// </summary>
     private void CheckBowTask() {
-        if (tasks.First != null && tasks.First.Value == Task.BOW) {
-            tasks.RemoveFirst();
+        if (tasksLeft.First != null && tasksLeft.First.Value == Task.BOW) {
+            tasksLeft.RemoveFirst();
         } else {
             taskFailed = true;
         }
@@ -55,8 +64,8 @@ public class TaskManager : MonoBehaviour {
     /// Check if the current task is to JUMP ON SPOT, otherwise fail the current mission.
     /// </summary>
     private void CheckJumpOnSpotTask() {
-        if(tasks.First != null && tasks.First.Value == Task.JUMP_ON_SPOT) {
-            tasks.RemoveFirst();
+        if(tasksLeft.First != null && tasksLeft.First.Value == Task.JUMP_ON_SPOT) {
+            tasksLeft.RemoveFirst();
         } else {
             taskFailed = true;
         }
