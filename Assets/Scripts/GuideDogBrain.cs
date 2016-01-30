@@ -26,6 +26,7 @@ public class GuideDogBrain : Movement {
 	private float initialX = -1f;
 
 	private void executeTutorial() {
+        Debug.Log("ExecuteTutorial");
 		
 		if (initialX < 0f) {
 			initialX = transform.position.x;

@@ -5,9 +5,11 @@ using System.Collections;
 
 public abstract class Movement : MonoBehaviour {
 
-	public float moveSpeed;
-    public float jumpSpeed;
-	public float jumpBoost;
+    public Animator animator;
+
+	public float moveSpeed = 3.5f;
+    public float jumpSpeed = 4f;
+	public float jumpBoost = 1.7f;
 
     protected Vector3 movementSpeed = new Vector3();
 
@@ -68,11 +70,11 @@ public abstract class Movement : MonoBehaviour {
         if (bowTimer >= maxBowTimer) {
             bowTimer = 0.0f;
             bowing = false;
-			transform.eulerAngles = Vector3.zero;
+			// transform.eulerAngles = Vector3.zero;
         } else {
 			Vector3 bowingRotationVector = new Vector3();
 			bowingRotationVector.z = -30;
-			transform.eulerAngles = bowingRotationVector;
+			// transform.eulerAngles = bowingRotationVector;
 		}
     }
 
@@ -96,7 +98,8 @@ public abstract class Movement : MonoBehaviour {
 
 	protected void doJump() {
 		if (characterController.isGrounded) {
-			movementSpeed.y = jumpSpeed * getBoostForJump();
+			movementSpeed.x *= getBoostForJump();
+			movementSpeed.y = jumpSpeed;
 		}
 	}
 
@@ -112,7 +115,8 @@ public abstract class Movement : MonoBehaviour {
 	}
 
 	protected void doBow() {
-		bowing = true;
+        animator.SetTrigger("Bow");
+        bowing = true;
 	}
 
 	protected void doMove(float dx) {
