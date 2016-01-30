@@ -64,4 +64,8 @@ public class GuideDogBrain : Movement {
 			jumpDone = true;
 		}
 	}
+
+	protected override float getBoostForJump() {
+		return jumpBoost;
+	}
 }

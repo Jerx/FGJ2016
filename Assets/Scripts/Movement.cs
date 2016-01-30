@@ -103,16 +103,7 @@ public abstract class Movement : MonoBehaviour {
 		}
 	}
 
-	private float getBoostForJump() {
-		if (GameStateTracker.InNormalMode()) {
-			return jumpBoost;
-		}
-		if (GameStateTracker.InTutorialMode()) {
-			TaskManager taskManager = GameObject.Find("TaskManager").GetComponent<TaskManager>();
-			return taskManager.IsMissionComplete() ? jumpBoost : 1.0f;
-		}
-		return 1.0f;
-	}
+	protected abstract float getBoostForJump();
 
 	protected void doBow() {
         animator.SetTrigger("Bow");

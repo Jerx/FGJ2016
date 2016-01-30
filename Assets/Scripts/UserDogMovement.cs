@@ -37,4 +37,14 @@ public class UserDogMovement : Movement {
 		}
 	}
     
+	protected override float getBoostForJump () {
+		if (GameStateTracker.InNormalMode()) {
+			return jumpBoost;
+		}
+		if (GameStateTracker.InTutorialMode()) {
+			TaskManager taskManager = GameObject.Find("TaskManager").GetComponent<TaskManager>();
+			return taskManager.IsMissionComplete() ? jumpBoost : 1.0f;
+		}
+		return 1.0f;
+	}
 }
