@@ -77,6 +77,7 @@ PlayerSettings:
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
+  virtualRealitySupported: 0
   productGUID: 6216137e0eb5adc4a80e42bfa5830df6
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 9
@@ -250,7 +251,6 @@ PlayerSettings:
   psp2InfoBarOnStartup: 0
   psp2InfoBarColor: 0
   psmSplashimage: {fileID: 0}
-  virtualRealitySupported: 0
   spritePackerPolicy: 
   scriptingDefineSymbols: {}
   metroPackageName: FGJ2016
@@ -373,18 +373,24 @@ PlayerSettings:
   - WebGL::exceptionSupport
   - WebGL::memorySize
   - WebPlayer::ScriptingBackend
+  - iOS::Architecture
+  - iOS::ScriptingBackend
   Standalone::ScriptingBackend: 0
   WebGL::ScriptingBackend: 1
   WebGL::audioCompressionFormat: 4
   WebGL::exceptionSupport: 1
   WebGL::memorySize: 256
   WebPlayer::ScriptingBackend: 0
+  iOS::Architecture: 2
+  iOS::ScriptingBackend: 1
   boolPropertyNames:
   - WebGL::analyzeBuildSize
   - WebGL::dataCaching
+  - WebGL::useEmbeddedResources
   - XboxOne::enus
   WebGL::analyzeBuildSize: 0
   WebGL::dataCaching: 0
+  WebGL::useEmbeddedResources: 0
   XboxOne::enus: 1
   stringPropertyNames:
   - WebGL::emscriptenArgs
