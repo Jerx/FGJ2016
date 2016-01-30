@@ -1,7 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+
 public class Movement : MonoBehaviour {
+
+    public delegate void BowEvent();
+    public static event BowEvent OnBow;
+
+    public delegate void JumpOnSpotEvent();
+    public static event JumpOnSpotEvent OnJumpOnSpot;
+
 
     public float moveSpeed = 5.0f;
     public float jumpSpeed = 20f;
@@ -80,8 +89,16 @@ public class Movement : MonoBehaviour {
 
         if (Input.GetButton("Jump")) {
             movementSpeed.y = jumpSpeed;
+            if (Mathf.Abs(movementSpeed.x) < 0.01f) {
+                if (OnJumpOnSpot != null) {
+                    OnJumpOnSpot();
+                }
+            }
         } else if (Input.GetButton("Bow")) {
             bowing = true;
+            if (OnBow != null) {
+                OnBow();
+            }
         }
     }
 
