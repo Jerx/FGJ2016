@@ -660,8 +660,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3b68508d2db461491391a39537b2dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 3.5
   jumpSpeed: 4
+  jumpBoost: 1.70000005
   maxBowTimer: 1
   respawnTimerMax: 1
 --- !u!1 &1948462572

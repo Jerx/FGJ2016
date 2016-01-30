@@ -94,4 +94,9 @@ public class TaskManager : MonoBehaviour {
         return taskFailed;
     }
 
+	public bool IsMissionComplete() {
+		Debug.Log("Mission complete: " + (!taskFailed && tasksLeft.Count == 0));
+		return !taskFailed && tasksLeft.Count == 0;
+	}
+
 }

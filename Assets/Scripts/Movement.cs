@@ -5,8 +5,9 @@ using System.Collections;
 
 public abstract class Movement : MonoBehaviour {
 
-    public float moveSpeed = 5.0f;
-    public float jumpSpeed = 4.0f;
+	public float moveSpeed;
+    public float jumpSpeed;
+	public float jumpBoost;
 
     protected Vector3 movementSpeed = new Vector3();
 
@@ -95,8 +96,19 @@ public abstract class Movement : MonoBehaviour {
 
 	protected void doJump() {
 		if (characterController.isGrounded) {
-			movementSpeed.y = jumpSpeed;
+			movementSpeed.y = jumpSpeed * getBoostForJump();
 		}
+	}
+
+	private float getBoostForJump() {
+		if (GameStateTracker.InNormalMode()) {
+			return jumpBoost;
+		}
+		if (GameStateTracker.InTutorialMode()) {
+			TaskManager taskManager = GameObject.Find("TaskManager").GetComponent<TaskManager>();
+			return taskManager.IsMissionComplete() ? jumpBoost : 1.0f;
+		}
+		return 1.0f;
 	}
 
 	protected void doBow() {
