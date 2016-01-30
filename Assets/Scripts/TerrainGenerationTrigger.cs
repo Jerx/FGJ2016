@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TerrainGenerationTrigger : MonoBehaviour {
 
-	public TerrainManager terrainManager;
+	private TerrainManager terrainManager;
 
 	void Start() {
 		terrainManager = GameObject.Find("TerrainManager").GetComponent<TerrainManager>();
