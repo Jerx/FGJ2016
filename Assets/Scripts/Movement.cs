@@ -7,10 +7,6 @@ public class Movement : MonoBehaviour {
     public float jumpSpeed = 20f;
 
     private Vector3 movementSpeed = new Vector3();
-    public Vector3 MovementSpeed {
-        set { movementSpeed = value; }
-        get { return movementSpeed; }
-    }
 
     private bool bowing = false;
     public bool Bowing {
@@ -24,6 +20,10 @@ public class Movement : MonoBehaviour {
     private CharacterController cc;
     private float ccDefaultHeight;
 
+    private bool respawning = false;
+    private float respawnTimer = 0f;
+    public float respawnTimerMax = 0.5f;
+
     void Start() {
         cc = GetComponent<CharacterController>();
         ccDefaultHeight = cc.height;
@@ -31,6 +31,15 @@ public class Movement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (respawning) {
+            respawnTimer += Time.deltaTime;
+            if (respawnTimer >= respawnTimerMax) {
+                respawnTimer = 0.0f;
+                respawning = false;
+            }
+            return; // Don't do anything else before spawning complete
+        }
+
         if (cc.isGrounded) {
             if (bowing) {
                 UpdateBowing();
@@ -61,5 +70,11 @@ public class Movement : MonoBehaviour {
             bowing = false;
             cc.height = ccDefaultHeight;
         }
+    }
+
+    public void Respawn(Vector3 position) {
+        respawning = true;
+        transform.position = position;
+        movementSpeed = Vector3.zero;
     }
 }
