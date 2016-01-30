@@ -32,11 +32,7 @@ public class Movement : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (respawning) {
-            respawnTimer += Time.deltaTime;
-            if (respawnTimer >= respawnTimerMax) {
-                respawnTimer = 0.0f;
-                respawning = false;
-            }
+            UpdateRespawning();
             return; // Don't do anything else before spawning complete
         }
 
@@ -54,12 +50,27 @@ public class Movement : MonoBehaviour {
                     bowing = true;
                 }
             }
+        } else {
+            movementSpeed += Physics.gravity * Time.deltaTime;
         }
 
-        movementSpeed += Physics.gravity * Time.deltaTime;
         cc.Move(movementSpeed * Time.deltaTime);
     }
 
+    /// <summary>
+    /// Helper function for handling respawning
+    /// </summary>
+    private void UpdateRespawning() {
+        respawnTimer += Time.deltaTime;
+        if (respawnTimer >= respawnTimerMax) {
+            respawnTimer = 0.0f;
+            respawning = false;
+        }
+    }
+
+    /// <summary>
+    /// Helper function for handling bowing
+    /// </summary>
     private void UpdateBowing() {
         bowTimer += Time.deltaTime;
         if (cc.height > 0.25) {
@@ -72,6 +83,10 @@ public class Movement : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Respawn character at <code>position</code>
+    /// </summary>
+    /// <param name="position"></param>
     public void Respawn(Vector3 position) {
         respawning = true;
         transform.position = position;
