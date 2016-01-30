@@ -11,6 +11,8 @@ public class UserDogMovement : Movement {
 
     public delegate void RunningJumpEvent();
     public static event RunningJumpEvent OnRunningJump;
+
+	private bool releasedJumpButton = true;
     	
 	protected override void UpdateInputMovement() {
 
@@ -19,14 +21,16 @@ public class UserDogMovement : Movement {
 		doMove(dx);
 		
 		if (Input.GetButton("Jump")) {
-			doJump();
-			if (Mathf.Abs(movementSpeed.x) < 0.01f) {
-				if (OnJumpOnSpot != null) {
-					OnJumpOnSpot();
-				}
-			} else {
-				if (OnRunningJump != null) {
-					OnRunningJump();
+			if (releasedJumpButton) {
+				doJump();
+				if (Mathf.Abs(movementSpeed.x) < 0.01f) {
+					if (OnJumpOnSpot != null) {
+						OnJumpOnSpot();
+					}
+				} else {
+					if (OnRunningJump != null) {
+						OnRunningJump();
+					}
 				}
 			}
 		} else if (Input.GetButton("Bow")) {
@@ -34,6 +38,16 @@ public class UserDogMovement : Movement {
 			if (OnBow != null) {
 				OnBow();
 			}
+		}
+
+		updateJumpButtonRelease();
+	}
+
+	private void updateJumpButtonRelease() {
+		if (Input.GetButton ("Jump")) {
+			releasedJumpButton = false;
+		} else if (GetComponent<CharacterController>().isGrounded) {
+			releasedJumpButton = true;
 		}
 	}
     
