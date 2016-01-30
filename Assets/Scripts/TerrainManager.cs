@@ -39,7 +39,9 @@ public class TerrainManager : MonoBehaviour {
         Debug.Log("    Height diff: " + heightDiff);
         verticalOffset += heightDiff;
 
-        SpawnGuideDog(terrain);
+        if (GameStateTracker.InTutorialMode()) {
+            SpawnGuideDog(terrain);
+        }
     }
 
     int nextIndex() {
@@ -53,7 +55,7 @@ public class TerrainManager : MonoBehaviour {
     /// <param name="terrain"></param>
     void SpawnGuideDog(Terrain terrain) {
         foreach (Transform transform in terrain.gameObject.transform) {
-            if(transform.gameObject.name == "SpawnPoint") {
+            if (transform.gameObject.name == "SpawnPoint") {
                 GameObject guideDog = GameObject.Instantiate<GameObject>(dogPrefab);
                 guideDog.transform.position = transform.position;
                 guideDog.name = "GuideDog";
