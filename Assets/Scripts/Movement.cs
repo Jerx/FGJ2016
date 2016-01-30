@@ -12,10 +12,16 @@ public class Movement : MonoBehaviour {
     public float maxBowTimer = 1.0f;
     private float bowTimer;
 
+    private CharacterController cc;
+    private float ccDefaultHeight;
+
+    void Start() {
+        cc = GetComponent<CharacterController>();
+        ccDefaultHeight = cc.height;
+    }
+
     // Update is called once per frame
     void Update() {
-        CharacterController cc = GetComponent<CharacterController>();
-
         if (cc.isGrounded) {
             if (bowing) {
                 UpdateBowing();
@@ -38,9 +44,13 @@ public class Movement : MonoBehaviour {
     
     private void UpdateBowing() {
         bowTimer += Time.deltaTime;
+        if (cc.height > 0.25) {
+            cc.height -= 10 * Time.deltaTime;
+        }
         if (bowTimer >= maxBowTimer) {
             bowTimer = 0.0f;
             bowing = false;
+            cc.height = ccDefaultHeight;
         }
     }
 }
