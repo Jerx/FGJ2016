@@ -9,6 +9,8 @@ public class TerrainManager : MonoBehaviour {
 
     public GameObject dogPrefab;
 
+    private Terrain currentTerrain;
+
     public void nextTerrain() {
 
         int index = nextIndex();
@@ -28,6 +30,14 @@ public class TerrainManager : MonoBehaviour {
         BoxCollider[] arr = terrain.GetComponentsInChildren<BoxCollider>();
         foreach (BoxCollider bc in arr) {
             bc.enabled = true;
+
+            if (GameStateTracker.InNormalMode()) {
+                foreach (Transform child in bc.transform.parent) {
+                    if (child.name == "TutorialTrigger") {
+                        child.GetComponent<BoxCollider>().enabled = false;
+                    }
+                }
+            }
         }
 
         offset += width;
@@ -39,7 +49,11 @@ public class TerrainManager : MonoBehaviour {
         Debug.Log("    Height diff: " + heightDiff);
         verticalOffset += heightDiff;
 
-        SpawnGuideDog(terrain);
+        currentTerrain = terrain;
+
+        if (GameStateTracker.InTutorialMode()) {
+            SpawnGuideDog(terrain);
+        }
     }
 
     int nextIndex() {
@@ -53,11 +67,23 @@ public class TerrainManager : MonoBehaviour {
     /// <param name="terrain"></param>
     void SpawnGuideDog(Terrain terrain) {
         foreach (Transform transform in terrain.gameObject.transform) {
-            if(transform.gameObject.name == "SpawnPoint") {
+            if (transform.gameObject.name == "SpawnPoint") {
                 GameObject guideDog = GameObject.Instantiate<GameObject>(dogPrefab);
                 guideDog.transform.position = transform.position;
                 guideDog.name = "GuideDog";
             }
         }
+    }
+
+    public void RespawnGuideDog() {
+        Debug.Log("Respawning Guide Dog");
+        DespawnGuideDog();
+        if (GameStateTracker.InTutorialMode()) {
+            SpawnGuideDog(currentTerrain);
+        }
+    }
+    
+    public void DespawnGuideDog() {
+        GameObject.Destroy(GameObject.Find("GuideDog"));
     }
 }

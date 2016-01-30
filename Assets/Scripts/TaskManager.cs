@@ -37,6 +37,7 @@ public class TaskManager : MonoBehaviour {
 		UserDogMovement.OnRunningJump -= CheckRunningJump;
     }
 
+
     public void AddTask(Task task) {
 		Debug.Log("Added Task " + task.ToString());
 		tasks.AddLast(task);

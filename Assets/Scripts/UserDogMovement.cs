@@ -18,7 +18,7 @@ public class UserDogMovement : Movement {
 		
 		doMove(dx);
 		
-		if (Input.GetButton("Jump")) {
+		if (Input.GetButtonDown("Jump")) {
 			doJump();
 			if (Mathf.Abs(movementSpeed.x) < 0.01f) {
 				if (OnJumpOnSpot != null) {
