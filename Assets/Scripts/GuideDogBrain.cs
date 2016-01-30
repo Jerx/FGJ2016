@@ -15,7 +15,27 @@ public class GuideDogBrain : Movement {
 		tutorialStarted = true;
 	}
 
+	private bool jumpDone = false;
+	private float initialX = -1f;
+
 	private void executeTutorial() {
-		doJump ();
+		if (initialX < 0f) {
+			initialX = transform.position.x;
+		}
+		doMove(1f);
+		if(isTimeToJump() && !jumpDone) {
+			executeJump();
+		}
+	}
+
+	private bool isTimeToJump() {
+		return transform.position.x - initialX > 3f;
+	}
+
+	private void executeJump() {
+		if (!jumpDone) {
+			doJump();
+			jumpDone = true;
+		}
 	}
 }

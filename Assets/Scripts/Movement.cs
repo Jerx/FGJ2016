@@ -20,7 +20,6 @@ public abstract class Movement : MonoBehaviour {
     private float bowTimer;
 
     private CharacterController characterController;
-    private float characterControllerDefaultHeight;
 
     private bool respawning = false;
     private float respawnTimer = 0f;
@@ -28,7 +27,6 @@ public abstract class Movement : MonoBehaviour {
 
     void Start() {
         characterController = GetComponent<CharacterController>();
-        characterControllerDefaultHeight = characterController.height;
     }
 
     // Update is called once per frame
@@ -65,14 +63,15 @@ public abstract class Movement : MonoBehaviour {
     /// </summary>
     private void UpdateBowing() {
         bowTimer += Time.deltaTime;
-        if (characterController.height > 0.25) {
-            characterController.height -= 10 * Time.deltaTime;
-        }
         if (bowTimer >= maxBowTimer) {
             bowTimer = 0.0f;
             bowing = false;
-            characterController.height = characterControllerDefaultHeight;
-        }
+			transform.eulerAngles = Vector3.zero;
+        } else {
+			Vector3 bowingRotationVector = new Vector3();
+			bowingRotationVector.z = -30;
+			transform.eulerAngles = bowingRotationVector;
+		}
     }
 
     private void ApplyGravity() {
@@ -101,5 +100,9 @@ public abstract class Movement : MonoBehaviour {
 
 	protected void doBow() {
 		bowing = true;
+	}
+
+	protected void doMove(float dx) {
+		movementSpeed.x = dx * moveSpeed;
 	}
 }
