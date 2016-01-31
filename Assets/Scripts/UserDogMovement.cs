@@ -17,6 +17,7 @@ public class UserDogMovement : Movement {
     protected override void UpdateInputMovement() {
 
         float dx = Input.GetAxis("Horizontal");
+        dx = Mathf.Clamp(dx, 0f, 1f);
 
         doMove(dx);
 
