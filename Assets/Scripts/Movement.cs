@@ -55,6 +55,9 @@ public abstract class Movement : MonoBehaviour {
     /// Helper function for handling respawning
     /// </summary>
     private void UpdateRespawning() {
+        animator.SetBool("Walk2", false);
+        animator.SetBool("Idle2", true);
+
         respawnTimer += Time.deltaTime;
         if (respawnTimer >= respawnTimerMax) {
             respawnTimer = 0.0f;

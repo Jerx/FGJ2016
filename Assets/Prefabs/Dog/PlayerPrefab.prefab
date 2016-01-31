@@ -1040,8 +1040,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c22f8dde88d20e14ca7646e418b0a56d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0.1, z: -1.2}
-  eulerAngles: {x: 10, y: 30, z: 0}
+  offset: {x: 0, y: 0.5, z: -1.2}
+  eulerAngles: {x: 5, y: 28, z: 0}
 --- !u!114 &11459604
 MonoBehaviour:
   m_ObjectHideFlags: 1
