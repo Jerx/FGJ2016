@@ -111,6 +111,11 @@ public abstract class Movement : MonoBehaviour {
     }
 
     protected void doMove(float dx) {
+        if(Mathf.Abs(dx) > 0.01f) {
+            animator.SetTrigger("Walk");
+        } else {
+            animator.SetTrigger("Idle");
+        }
         movementSpeed.x = dx * moveSpeed;
     }
 
