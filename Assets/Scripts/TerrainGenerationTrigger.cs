@@ -10,10 +10,8 @@ public class TerrainGenerationTrigger : MonoBehaviour {
 	}
 
 	void OnTriggerExit(Collider collider) {
-        if (collider.gameObject.name == "GuideDog") {
-            terrainManager.DespawnGuideDog();
-        } else {
-            terrainManager.DespawnGuideDog();
+		terrainManager.DespawnGuideDog();
+        if (collider.gameObject.name != "GuideDog") {
 
             // If one reaches this trigger, a successful jump has occured.
             GameStateTracker.IncrementSuccessfulJumpCounter();
