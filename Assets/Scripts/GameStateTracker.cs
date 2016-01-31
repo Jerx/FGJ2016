@@ -10,6 +10,7 @@ public class GameStateTracker : MonoBehaviour {
 
     private static GameState currentState = GameState.TUTORIAL;
     private static int successfulJumpCounter = 0;
+	private static bool firstTerrainGenerated = false;
 
     private static InterfaceGameStateChangeRule currentRule;
 
@@ -25,16 +26,17 @@ public class GameStateTracker : MonoBehaviour {
         currentRule = rule;
     }
 
-    void Update() {
-        currentRule.UpdateGameState();
-    }
-
     //=================================================
     // Counter, not sure if it is needed anymore...
     //=================================================
 
     public static void IncrementSuccessfulJumpCounter() {
-        successfulJumpCounter++;
+		if (firstTerrainGenerated) {
+        	successfulJumpCounter++;
+			currentRule.UpdateGameState();
+		} else {
+			firstTerrainGenerated = true;
+		}
     }
 
     public static int GetSuccessfulJumpCounter() {
