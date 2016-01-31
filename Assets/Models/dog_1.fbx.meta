@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: dc942ce3353d0b647b0478e42043f4c7
-timeCreated: 1454196580
+timeCreated: 1454239419
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -80,11 +80,13 @@ ModelImporter:
     4300000: Cube
     7400000: bow_down_2
     7400002: Idle
-    7400004: Walk
+    7400004: Walk.001
+    7400006: Jump
+    7400008: Bounce
     9500000: //RootNode
     13700000: Cube
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
@@ -115,7 +117,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -215,6 +217,206 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Neck
+        weight: 1
+      - path: Armature/Neck/Head
+        weight: 1
+      - path: Armature/Neck/Head/Head_end
+        weight: 1
+      - path: Armature/Upperspine
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.L
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.L/Frontleg2.L
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.L/Frontleg2.L/Frontleg2.L.001
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.L/Frontleg2.L/Frontleg2.L.001/Frontleg3.L
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.L/Frontleg2.L/Frontleg2.L.001/Frontleg3.L/Frontpaw.L
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.L/Frontleg2.L/Frontleg2.L.001/Frontleg3.L/Frontpaw.L/Frontpaw.L_end
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.R
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.R/Frontleg2.R
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.R/Frontleg2.R/Frontleg2.R.001
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.R/Frontleg2.R/Frontleg2.R.001/Frontleg3.R
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.R/Frontleg2.R/Frontleg2.R.001/Frontleg3.R/Frontpaw.R
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.R/Frontleg2.R/Frontleg2.R.001/Frontleg3.R/Frontpaw.R/Frontpaw.R_end
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.L
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.L/Rearleg2.L
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.L/Rearleg2.L/Rearleg2.L.001
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.L/Rearleg2.L/Rearleg2.L.001/Rearleg3.L
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.L/Rearleg2.L/Rearleg2.L.001/Rearleg3.L/Rearpaw.L
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.L/Rearleg2.L/Rearleg2.L.001/Rearleg3.L/Rearpaw.L/Rearpaw.L_end
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.R
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.R/Rearleg2.R
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.R/Rearleg2.R/Rearleg2.R.001
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.R/Rearleg2.R/Rearleg2.R.001/Rearleg3.R
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.R/Rearleg2.R/Rearleg2.R.001/Rearleg3.R/Rearpaw.R
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.R/Rearleg2.R/Rearleg2.R.001/Rearleg3.R/Rearpaw.R/Rearpaw.R_end
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Tail1
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Tail1/Tail2
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Tail1/Tail2/Tail3
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Tail1/Tail2/Tail3/Tail3_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk.001
+      takeName: Walk.001
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Neck
+        weight: 1
+      - path: Armature/Neck/Head
+        weight: 1
+      - path: Armature/Neck/Head/Head_end
+        weight: 1
+      - path: Armature/Upperspine
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.L
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.L/Frontleg2.L
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.L/Frontleg2.L/Frontleg2.L.001
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.L/Frontleg2.L/Frontleg2.L.001/Frontleg3.L
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.L/Frontleg2.L/Frontleg2.L.001/Frontleg3.L/Frontpaw.L
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.L/Frontleg2.L/Frontleg2.L.001/Frontleg3.L/Frontpaw.L/Frontpaw.L_end
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.R
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.R/Frontleg2.R
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.R/Frontleg2.R/Frontleg2.R.001
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.R/Frontleg2.R/Frontleg2.R.001/Frontleg3.R
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.R/Frontleg2.R/Frontleg2.R.001/Frontleg3.R/Frontpaw.R
+        weight: 1
+      - path: Armature/Upperspine/Frontleg1.R/Frontleg2.R/Frontleg2.R.001/Frontleg3.R/Frontpaw.R/Frontpaw.R_end
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.L
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.L/Rearleg2.L
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.L/Rearleg2.L/Rearleg2.L.001
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.L/Rearleg2.L/Rearleg2.L.001/Rearleg3.L
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.L/Rearleg2.L/Rearleg2.L.001/Rearleg3.L/Rearpaw.L
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.L/Rearleg2.L/Rearleg2.L.001/Rearleg3.L/Rearpaw.L/Rearpaw.L_end
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.R
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.R/Rearleg2.R
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.R/Rearleg2.R/Rearleg2.R.001
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.R/Rearleg2.R/Rearleg2.R.001/Rearleg3.R
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.R/Rearleg2.R/Rearleg2.R.001/Rearleg3.R/Rearpaw.R
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Rearleg1.R/Rearleg2.R/Rearleg2.R.001/Rearleg3.R/Rearpaw.R/Rearpaw.R_end
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Tail1
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Tail1/Tail2
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Tail1/Tail2/Tail3
+        weight: 1
+      - path: Armature/Upperspine/Lowerspine/Tail1/Tail2/Tail3/Tail3_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Jump
+      takeName: Jump
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
@@ -305,17 +507,17 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Walk
-      takeName: Walk
-      firstFrame: 0
-      lastFrame: 90
+      name: Bounce
+      takeName: Bounce
+      firstFrame: 6
+      lastFrame: 45
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

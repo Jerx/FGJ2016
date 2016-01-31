@@ -39,6 +39,7 @@ public class GuideDogBrain : Movement {
 				doBow();
 			} else if (task == TaskManager.Task.JUMP_ON_SPOT) {
 				doJump();
+                PlayBounceAnimation();
 			}
 		} else {
 			if (isTimeToMove()) {
@@ -61,6 +62,7 @@ public class GuideDogBrain : Movement {
 	private void executeJump() {
 		if (!jumpDone) {
 			doJump();
+            PlayJumpAnimation();
 			jumpDone = true;
 		}
 	}

@@ -55,8 +55,8 @@ public abstract class Movement : MonoBehaviour {
     /// Helper function for handling respawning
     /// </summary>
     private void UpdateRespawning() {
-        animator.SetBool("Walk2", false);
-        animator.SetBool("Idle2", true);
+        animator.SetBool("Walk", false);
+        animator.SetBool("Idle", true);
 
         respawnTimer += Time.deltaTime;
         if (respawnTimer >= respawnTimerMax) {
@@ -101,10 +101,17 @@ public abstract class Movement : MonoBehaviour {
 
     protected void doJump() {
         if (characterController.isGrounded) {
-            animator.SetTrigger("Jump");
             movementSpeed.x *= getBoostForJump();
             movementSpeed.y = jumpSpeed;
         }
+    }
+
+    protected void PlayJumpAnimation() {
+        animator.SetTrigger("Jump");
+    }
+
+    protected void PlayBounceAnimation() {
+        animator.SetTrigger("Bounce");
     }
 
     protected abstract float getBoostForJump();
@@ -116,13 +123,11 @@ public abstract class Movement : MonoBehaviour {
 
     protected void doMove(float dx) {
         if(Mathf.Abs(dx) > 0.01f) {
-           // animator.SetTrigger("Walk");
-            animator.SetBool("Walk2", true);
-            animator.SetBool("Idle2", false);
+            animator.SetBool("Walk", true);
+            animator.SetBool("Idle", false);
         } else {
-           // animator.SetTrigger("Idle");
-            animator.SetBool("Idle2", true);
-            animator.SetBool("Walk2", false);
+            animator.SetBool("Idle", true);
+            animator.SetBool("Walk", false);
         }
         movementSpeed.x = dx * moveSpeed;
     }
