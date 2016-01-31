@@ -1020,8 +1020,8 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179574}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: dc942ce3353d0b647b0478e42043f4c7, type: 3}
-  m_Controller: {fileID: 9100000, guid: 03fcef3b3743a5b4396a33ca68a83e89, type: 2}
+  m_Avatar: {fileID: 9000000, guid: 08924e79e373d434c8f03ed6b37bcbe7, type: 3}
+  m_Controller: {fileID: 9100000, guid: d1f0de3a3e4729f4cb9ad23ef42a0d83, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1040,8 +1040,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c22f8dde88d20e14ca7646e418b0a56d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0.1, z: -1.2}
-  eulerAngles: {x: 10, y: 30, z: 0}
+  offset: {x: 0, y: 0.5, z: -1.2}
+  eulerAngles: {x: 5, y: 28, z: 0}
 --- !u!114 &11459604
 MonoBehaviour:
   m_ObjectHideFlags: 1
