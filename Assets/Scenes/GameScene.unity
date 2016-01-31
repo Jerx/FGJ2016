@@ -407,6 +407,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11427472, guid: dfd59243d283343aa9b325435c67f881, type: 2}
+      propertyPath: terrainPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 474152, guid: dfd59243d283343aa9b325435c67f881, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -455,6 +459,10 @@ Prefab:
       propertyPath: dogPrefab
       value: 
       objectReference: {fileID: 119126, guid: ac7e1a40c104d7143b0341dc1da05d35, type: 2}
+    - target: {fileID: 11427472, guid: dfd59243d283343aa9b325435c67f881, type: 2}
+      propertyPath: terrainPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1453012349}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfd59243d283343aa9b325435c67f881, type: 2}
   m_IsPrefabParent: 0
@@ -674,6 +682,53 @@ Terrain:
   m_PrefabParentObject: {fileID: 21809676, guid: f823b6ae63d20425b866b678dca94fe3,
     type: 2}
   m_PrefabInternal: {fileID: 1062947257}
+--- !u!1001 &1453012348
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 442870, guid: 1fbf854e9d7e34f12bc9666a583add67, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442870, guid: 1fbf854e9d7e34f12bc9666a583add67, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442870, guid: 1fbf854e9d7e34f12bc9666a583add67, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442870, guid: 1fbf854e9d7e34f12bc9666a583add67, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442870, guid: 1fbf854e9d7e34f12bc9666a583add67, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442870, guid: 1fbf854e9d7e34f12bc9666a583add67, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442870, guid: 1fbf854e9d7e34f12bc9666a583add67, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 442870, guid: 1fbf854e9d7e34f12bc9666a583add67, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 1fbf854e9d7e34f12bc9666a583add67, type: 2}
+  m_IsPrefabParent: 0
+--- !u!218 &1453012349 stripped
+Terrain:
+  m_PrefabParentObject: {fileID: 21890370, guid: 1fbf854e9d7e34f12bc9666a583add67,
+    type: 2}
+  m_PrefabInternal: {fileID: 1453012348}
 --- !u!218 &1548925550 stripped
 Terrain:
   m_PrefabParentObject: {fileID: 21890372, guid: 96565722ae74d4db3a9b3bfce3a03b24,
@@ -757,6 +812,7 @@ MonoBehaviour:
   - {fileID: 1548925550}
   - {fileID: 1322112130}
   - {fileID: 462535054}
+  - {fileID: 1453012349}
   dogPrefab: {fileID: 119126, guid: ac7e1a40c104d7143b0341dc1da05d35, type: 2}
 --- !u!4 &1864309055
 Transform:

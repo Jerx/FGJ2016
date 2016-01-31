@@ -7,11 +7,15 @@ public class TerrainManager : MonoBehaviour {
     private float verticalOffset = -100f;
     public Terrain[] terrainPrefabs;
 
+	public int failsNeededToFinish = 2;
+
     public GameObject dogPrefab;
 
     private Terrain currentTerrain;
 
     public void nextTerrain() {
+
+		initializeNewTasks();
 
         int index = nextIndex();
 
@@ -56,8 +60,17 @@ public class TerrainManager : MonoBehaviour {
         }
     }
 
+	private void initializeNewTasks() {
+		// TODO: change this to choose the tasks correctly, now always the same tasks.
+		TaskManager taskManager = GameObject.Find("TaskManager").GetComponent<TaskManager>();
+		taskManager.RestartTasks();
+	}
+
     int nextIndex() {
-        // TODO: Implement this properly.
+        TaskManager taskManager = GameObject.Find("TaskManager").GetComponent<TaskManager>();
+		if (taskManager.MissionFailsInARow() >= failsNeededToFinish) {
+			return 3;
+		}
         return 2;
     }
 

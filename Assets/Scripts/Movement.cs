@@ -103,16 +103,7 @@ public abstract class Movement : MonoBehaviour {
         }
     }
 
-    private float getBoostForJump() {
-        if (GameStateTracker.InNormalMode()) {
-            return jumpBoost;
-        }
-        if (GameStateTracker.InTutorialMode()) {
-            TaskManager taskManager = GameObject.Find("TaskManager").GetComponent<TaskManager>();
-            return taskManager.IsMissionComplete() ? jumpBoost : 1.0f;
-        }
-        return 1.0f;
-    }
+    protected abstract float getBoostForJump();
 
     protected void doBow() {
         animator.SetTrigger("Bow");
@@ -120,15 +111,9 @@ public abstract class Movement : MonoBehaviour {
     }
 
     protected void doMove(float dx) {
-        if (Mathf.Abs(dx) > 0.01f) {
-            animator.SetTrigger("Walk");
-        } else {
-            animator.SetTrigger("Idle");
-        }
-        Debug.Log(dx);
         movementSpeed.x = dx * moveSpeed;
     }
-    
+
     protected bool IsIdle() {
         return characterController.isGrounded && !bowing && isZeroMovement();
     }
