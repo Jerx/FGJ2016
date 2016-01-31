@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MenuButtonScript : MonoBehaviour {
     	
@@ -10,7 +11,7 @@ public class MenuButtonScript : MonoBehaviour {
             Application.Quit();
         } else if (Input.anyKeyDown) {
             Debug.Log("An other key is down");
-            Application.LoadLevel("GameScene");
+            SceneManager.LoadScene("GameScene");
         }
 	}
 
