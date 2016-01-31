@@ -22,13 +22,13 @@ public class TerrainManager : MonoBehaviour {
         Debug.Log("Creating new terrain!");
         Debug.Log("  Index: " + index);
 
-		generateTerrain(index);
+		generateTerrain(index, true);
 		if (index == 2) {
-			generateTerrain(1);
+			generateTerrain(1, false);
 		}
     }
 
-	private void generateTerrain(int index) {
+	private void generateTerrain(int index, bool makeCurrent) {
 		
 		Terrain terrain = GameObject.Instantiate<Terrain>(terrainPrefabs[index]);
 		terrain.transform.parent = this.transform;
@@ -60,9 +60,11 @@ public class TerrainManager : MonoBehaviour {
 		float heightDiff = terrain.terrainData.GetHeight(hwidth, playerZ) - terrain.terrainData.GetHeight(0, playerZ);
 		Debug.Log("    Height diff: " + heightDiff);
 		verticalOffset += heightDiff;
-		
-		currentTerrain = terrain;
-		
+
+		if (makeCurrent) {
+			currentTerrain = terrain;
+		}
+
 		if (GameStateTracker.InTutorialMode()) {
 			SpawnGuideDog(terrain);
 		}
@@ -87,6 +89,9 @@ public class TerrainManager : MonoBehaviour {
     /// </summary>
     /// <param name="terrain"></param>
     void SpawnGuideDog(Terrain terrain) {
+
+		Debug.Log("Current terrain: " + terrain);
+
         foreach (Transform transform in terrain.gameObject.transform) {
             if (transform.gameObject.name == "SpawnPoint") {
                 GameObject guideDog = GameObject.Instantiate<GameObject>(dogPrefab);
@@ -99,6 +104,9 @@ public class TerrainManager : MonoBehaviour {
     public void RespawnGuideDog() {
         Debug.Log("Respawning Guide Dog");
         DespawnGuideDog();
+		
+		Debug.Log("In tutorial mode: " + GameStateTracker.InTutorialMode());
+
         if (GameStateTracker.InTutorialMode()) {
             SpawnGuideDog(currentTerrain);
         }
