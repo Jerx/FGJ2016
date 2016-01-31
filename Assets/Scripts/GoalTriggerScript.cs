@@ -5,13 +5,18 @@ public class GoalTriggerScript : MonoBehaviour {
 
 	private bool done = false;
 	private bool timerOn = false;
-	public float waitingTime = 2.0f;
+	public float waitingTime = 3.0f;
 	private float timer = 0.0f;
 
 	void OnTriggerExit(Collider collider) {
 		Debug.Log("Goal!");
 		done = true;
 		timerOn = false;
+		freezePlayer();
+	}
+
+	private void freezePlayer() {
+		GameObject.Find("PlayerPrefab").GetComponent<UserDogMovement>().freezeControls();
 	}
 
 	public void Update() {
