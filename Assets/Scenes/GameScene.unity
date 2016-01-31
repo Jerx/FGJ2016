@@ -553,7 +553,7 @@ Prefab:
         type: 2}
     - target: {fileID: 11427472, guid: dfd59243d283343aa9b325435c67f881, type: 2}
       propertyPath: failsNeededToFinish
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfd59243d283343aa9b325435c67f881, type: 2}
@@ -894,7 +894,7 @@ MonoBehaviour:
   - {fileID: 21869418, guid: d5d0b6e0c16364348926c3be7e8903c0, type: 2}
   - {fileID: 462535054}
   - {fileID: 21890370, guid: 1fbf854e9d7e34f12bc9666a583add67, type: 2}
-  failsNeededToFinish: 2
+  failsNeededToFinish: 0
   dogPrefab: {fileID: 119126, guid: ac7e1a40c104d7143b0341dc1da05d35, type: 2}
 --- !u!4 &1864309055
 Transform:
