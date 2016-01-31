@@ -7,9 +7,9 @@ public abstract class Movement : MonoBehaviour {
 
     public Animator animator;
 
-	public float moveSpeed = 3.5f;
+    public float moveSpeed = 3.5f;
     public float jumpSpeed = 4f;
-	public float jumpBoost = 1.7f;
+    public float jumpBoost = 1.7f;
 
     protected Vector3 movementSpeed = new Vector3();
 
@@ -38,7 +38,7 @@ public abstract class Movement : MonoBehaviour {
             UpdateRespawning();
             ApplyGravity();
         } else if (characterController.isGrounded) {
-			movementSpeed.y = 0f;
+            movementSpeed.y = 0f;
             if (bowing) {
                 UpdateBowing();
             } else {
@@ -70,18 +70,18 @@ public abstract class Movement : MonoBehaviour {
         if (bowTimer >= maxBowTimer) {
             bowTimer = 0.0f;
             bowing = false;
-			// transform.eulerAngles = Vector3.zero;
+            // transform.eulerAngles = Vector3.zero;
         } else {
-			Vector3 bowingRotationVector = new Vector3();
-			bowingRotationVector.z = -30;
-			// transform.eulerAngles = bowingRotationVector;
-		}
+            Vector3 bowingRotationVector = new Vector3();
+            bowingRotationVector.z = -30;
+            // transform.eulerAngles = bowingRotationVector;
+        }
     }
 
     private void ApplyGravity() {
-		if (!characterController.isGrounded) {
-        	movementSpeed += Physics.gravity * Time.deltaTime;
-		}
+        if (!characterController.isGrounded) {
+            movementSpeed += Physics.gravity * Time.deltaTime;
+        }
     }
 
     /// <summary>
@@ -94,40 +94,46 @@ public abstract class Movement : MonoBehaviour {
         movementSpeed = Vector3.zero;
     }
 
-	protected abstract void UpdateInputMovement();
+    protected abstract void UpdateInputMovement();
 
-	protected void doJump() {
-		if (characterController.isGrounded) {
-			movementSpeed.x *= getBoostForJump();
-			movementSpeed.y = jumpSpeed;
-		}
-	}
+    protected void doJump() {
+        if (characterController.isGrounded) {
+            movementSpeed.x *= getBoostForJump();
+            movementSpeed.y = jumpSpeed;
+        }
+    }
 
-	private float getBoostForJump() {
-		if (GameStateTracker.InNormalMode()) {
-			return jumpBoost;
-		}
-		if (GameStateTracker.InTutorialMode()) {
-			TaskManager taskManager = GameObject.Find("TaskManager").GetComponent<TaskManager>();
-			return taskManager.IsMissionComplete() ? jumpBoost : 1.0f;
-		}
-		return 1.0f;
-	}
+    private float getBoostForJump() {
+        if (GameStateTracker.InNormalMode()) {
+            return jumpBoost;
+        }
+        if (GameStateTracker.InTutorialMode()) {
+            TaskManager taskManager = GameObject.Find("TaskManager").GetComponent<TaskManager>();
+            return taskManager.IsMissionComplete() ? jumpBoost : 1.0f;
+        }
+        return 1.0f;
+    }
 
-	protected void doBow() {
+    protected void doBow() {
         animator.SetTrigger("Bow");
         bowing = true;
-	}
+    }
 
-	protected void doMove(float dx) {
-		movementSpeed.x = dx * moveSpeed;
-	}
+    protected void doMove(float dx) {
+        if (Mathf.Abs(dx) > 0.01f) {
+            animator.SetTrigger("Walk");
+        } else {
+            animator.SetTrigger("Idle");
+        }
+        Debug.Log(dx);
+        movementSpeed.x = dx * moveSpeed;
+    }
+    
+    protected bool IsIdle() {
+        return characterController.isGrounded && !bowing && isZeroMovement();
+    }
 
-	protected bool IsIdle() {
-		return characterController.isGrounded && !bowing && isZeroMovement();
-	}
-
-	private bool isZeroMovement() {
-		return Vector3.Magnitude(movementSpeed) < 1e-3f;
-	}
+    private bool isZeroMovement() {
+        return Vector3.Magnitude(movementSpeed) < 1e-3f;
+    }
 }
