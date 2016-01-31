@@ -11,6 +11,8 @@ public abstract class Movement : MonoBehaviour {
     public float jumpSpeed = 4f;
     public float jumpBoost = 1.7f;
 
+	private bool frozen = false;
+
     protected Vector3 movementSpeed = new Vector3();
 
     private bool bowing = false;
@@ -32,21 +34,33 @@ public abstract class Movement : MonoBehaviour {
         characterController = GetComponent<CharacterController>();
     }
 
+	public void freezeControls() {
+		frozen = true;
+		animator.SetBool("Idle", true);
+		animator.SetBool("Walk", false);
+	}
+
     // Update is called once per frame
     void Update() {
-        if (respawning) {
-            UpdateRespawning();
-            ApplyGravity();
-        } else if (characterController.isGrounded) {
-            movementSpeed.y = 0f;
-            if (bowing) {
-                UpdateBowing();
-            } else {
-                UpdateInputMovement();
-            }
-        } else {
-            ApplyGravity();
-        }
+
+		if (frozen) {
+			ApplyGravity();
+			movementSpeed.x = 0f;
+		} else {
+			if (respawning) {
+	            UpdateRespawning();
+	            ApplyGravity();
+	        } else if (characterController.isGrounded) {
+	            movementSpeed.y = 0f;
+	            if (bowing) {
+	                UpdateBowing();
+	            } else {
+	                UpdateInputMovement();
+	            }
+	        } else {
+	            ApplyGravity();
+	        }
+		}
 
         characterController.Move(movementSpeed * Time.deltaTime);
     }
